@@ -1,0 +1,111 @@
+<form
+  novalidate
+  [formGroup]="screenFormGroup"
+>
+  <div
+    magic="table"
+    class="table"
+  >
+    <button
+      mat-raised-button
+      color="primary"
+      magic="button"
+      class="button"
+    >
+      button
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      magic="next"
+      class="next"
+    >
+      next
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      magic="prev"
+      class="prev"
+    >
+      prev
+    </button>
+
+    <div class="example-container mat-elevation-z8">
+      <mat-table #table [dataSource]="dataSource">
+
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="a">
+          <mat-header-cell *matHeaderCellDef> a </mat-header-cell>
+          <mat-cell *matCellDef="let element"> <label magic="a" [rowId]="element.rowId">{{element.getValue('a')}} </label></mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="n">
+          <mat-header-cell *matHeaderCellDef> n </mat-header-cell>
+          <mat-cell *matCellDef="let element" > <label magic="n" [rowId]="element.rowId">{{element.getValue('n')}} </label></mat-cell>
+        </ng-container>
+
+
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+    </div>
+    <!--<ul-->
+      <!--class="table"-->
+      <!--magic="table"-->
+      <!--class="table"-->
+    <!--&gt;-->
+     <!---->
+
+
+
+      <!--<li *ngFor="let row of task.Records.list">-->
+        <!--<div-->
+          <!--*ngIf="ifRowCreated(row.rowId)"-->
+          <!--id="row"-->
+        <!--&gt;-->
+          <!--<form-->
+            <!--[formGroup]="getFormGroupByRow(row.rowId)"-->
+            <!--class="table_table_row"-->
+          <!--&gt;-->
+            <!--<div magic="tmpID8">-->
+              <!--<mat-form-field>-->
+                <!--<input-->
+                  <!--matInput-->
+                  <!--magic="a"-->
+                  <!--[rowId]="row.rowId"-->
+                  <!--class="a twod_border"-->
+                <!--&gt;-->
+                <!--&lt;!&ndash;-->
+<!--<button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">-->
+<!--<mat-icon>close</mat-icon>-->
+<!--</button>-->
+<!--&ndash;&gt;-->
+              <!--</mat-form-field>-->
+            <!--</div>-->
+            <!--<div magic="tmpID9">-->
+              <!--<mat-form-field>-->
+                <!--<input-->
+                  <!--matInput-->
+                  <!--magic="n"-->
+                  <!--[rowId]="row.rowId"-->
+                  <!--class="n twod_border"-->
+                <!--&gt;-->
+                <!--&lt;!&ndash;-->
+<!--<button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">-->
+<!--<mat-icon>close</mat-icon>-->
+<!--</button>-->
+<!--&ndash;&gt;-->
+              <!--</mat-form-field>-->
+            <!--</div>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</li>-->
+    <!--</ul>-->
+  </div>
+</form>

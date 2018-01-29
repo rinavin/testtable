@@ -1,0 +1,46 @@
+<form
+    novalidate
+    [formGroup]="screenFormGroup"
+>
+    <div
+        magic="test"
+        class="test"
+    >
+        <label
+            magic="alabel"
+            class="alabel hidden_border"
+        >
+            <!--todo:nomagic-->
+            <!--{{gettext('alabel')}}-->
+            label text
+            </label>
+            <mat-form-field>
+                <input
+                    matInput
+                    magic="a"
+                    class="a"
+                >
+                    <!--
+        <button mat-button *ngIf="value" mdSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+        </button>
+-->
+            </mat-form-field>
+            <label
+                magic="balabel"
+                class="balabel hidden_border"
+            >
+                <!--todo:nomagic-->
+                <!--{{gettext('balabel')}}-->
+                label text
+                </label>
+                <button
+                    mat-raised-button
+                    color="primary"
+                    magic="bb"
+                    class="bb"
+                >
+                    bb
+                    </button>
+                    </div>
+                    </form>
