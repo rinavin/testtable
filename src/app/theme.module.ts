@@ -8,7 +8,7 @@ import {
   MatCheckboxModule,
 
   MatCardModule, MatListModule, MatInputModule, MatSliderModule, MatSelectModule, MatSidenavModule, MatSlideToggleModule, MatSnackBarModule,
-  MatSortModule, MatTableModule, MatTabsModule, MatStepperModule
+  MatSortModule, MatTableModule, MatTabsModule, MatStepperModule, MatPaginator, MatPaginatorModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -28,6 +28,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
       MatSelectModule,
       MatSidenavModule,
+      MatPaginatorModule,
 
       MatSlideToggleModule,
       MatSnackBarModule,
@@ -50,7 +51,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
           MatSelectModule,
       MatSidenavModule,
-
+      MatPaginatorModule,
       MatSlideToggleModule,
       MatSnackBarModule,
       MatSortModule,

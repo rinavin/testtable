@@ -41,11 +41,14 @@ export class ControlsMetadata {
   values: Map<string, string> = new Map();
   // dictionary of controls with there properties
   ControlsProperties: Map<string, ControlMetadata> = new Map();
-
   rowId: string;
+  isCreated = false;
+
   get Values(){
     return this.values;
   }
+
+
 
   getControlMetadata(controlId: string) {
     if (!(controlId in this.ControlsProperties))
@@ -92,7 +95,27 @@ export class ControlsMetadata {
 export class Records {
   data: Map<string, ControlsMetadata> = new Map();
   list:ControlsMetadata[]=[] ; //used for sequential access in table
+  includesFirst:boolean;
+  includesLast:boolean;
 
+
+  markrowAsCreated(row:number): void
+  {
+    this.data[row].isCreated = true;
+  }
+
+  markrowAsNotCreated(row:number): void
+  {
+    this.data[row].isCreated = false;
+  }
+
+  isRowCreated(row:number): boolean
+  {
+    if (row < this.list.length)
+     return this.data[row].isCreated;
+    //!!!!
+    return true;
+  }
   update(obj) {
 
     if (obj.fullRefresh && obj.rows.length != this.list.length ) {

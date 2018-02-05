@@ -105,6 +105,23 @@ export class TaskMagicService {
     this.Records.updateSize(size);
   }
 
+  setIncludesFirst(value: boolean): void {
+    this.Records.includesFirst = value;
+  }
+
+  setIncludesLast(value: boolean): void {
+    this.Records.includesLast = value;
+  }
+
+  markRowAsCreated(row: number): void {
+    this.Records.markrowAsCreated(row);
+  }
+
+
+  markrowAsNotCreated(row: number): void {
+    this.Records.markrowAsNotCreated(row);
+  }
+
   initTask() {
     this.magic.refreshDom
       .filter(command => command.TaskTag == this.taskId)
@@ -130,8 +147,14 @@ export class TaskMagicService {
       rowId = "0";
     if (this.IsStub())
       return this.getPropertyStub(this.Records.list[rowId], controlId, prop);
-    else
-      return this.Records.list[rowId].getProperty(controlId, prop);
+    else {
+      let rec = this.Records.list[rowId];
+      if (isNullOrUndefined(rec))
+        debugger;
+      else
+         return this.Records.list[rowId].getProperty(controlId, prop);
+
+    }
   }
 
   getPropertyStub(ControlsProperties: any, controlId, prop) {

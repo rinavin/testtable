@@ -126,6 +126,18 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
   refreshDataSource(){}
 
+  getRowsIfNeed(pageIndex:number, pageSize: number): void {
+    if (!this.task.Records.includesLast) {
+      for (let i = pageIndex * pageSize ; i < pageIndex * (pageSize + 1)  ; i++) {
+        if (!this.task.Records.isRowCreated(i)) {
+          this.task.insertEvent("getRows", "table", "" + i);
+          console.log("get line");
+          break;
+        }
+      }
+    }
+  }
+
   executeCommand(command: GuiCommand): void {
     let rowId: string = (command.line || 0).toString();
     let controlId = command.CtrlName;
@@ -143,6 +155,21 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
           this.task.updateTableSize(command.number);
 
         this.ref.detectChanges();
+        break;
+      case CommandType.CREATE_TABLE_ROW:
+        this.task.markRowAsCreated(command.number);
+        break;
+
+      case CommandType.UNDO_CREATE_TABLE_ROW:
+        this.task.markrowAsNotCreated(command.number);
+        break;
+
+
+      case CommandType.SET_TABLE_INCLUDES_FIRST:
+        this.task.setIncludesFirst(command.Bool1);
+        break;
+      case CommandType.SET_TABLE_INCLUDES_LAST:
+        this.task.setIncludesLast(command.Bool1);
         break;
 
       case CommandType.SET_PROPERTY:
@@ -277,6 +304,11 @@ export abstract class BaseTaskMagicComponent implements OnInit, OnDestroy {
 
     this.task.createData();
 
+  }
+
+  onPaginateChange(e)
+  {
+    this.getRowsIfNeed(e.pageIndex, e.pageSize) ;
   }
 
   public loadData()
